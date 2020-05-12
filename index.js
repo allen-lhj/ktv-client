@@ -1,12 +1,26 @@
 /* * @Author: Allen-lhj  * @Date: 2020-05-03 10:25:39   * @Last Modified time: 2020-05-03 10:25:39  */
 const express = require("express")
-
+const path = require("path")
+const bodyParser = require("body-parser")
+const passport = require("passport")
 const app = express()
+// 配置
+require("./config/http")(app);//跨域
+require("./mongodb/mongodb");//数据库
+require("./config/passport")(passport);//验证token
 
+//中间件
+app.use(express.json());
+//配置body-parser以获取表单post请求体的api
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use(passport.initialize());
+
+//404
 app.get("*", (req, res) => {
-    res.send("hello world!")
+    res.sendFile(path.resolve(__dirname, "static/view/404.html"))
 })
-
+//创建服务器
 const port = process.env.PORT || 8080;
 app.listen(port,err => {
     if(err) throw err;

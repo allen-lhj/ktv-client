@@ -1,0 +1,6 @@
+{
+    "fileheader.Author": "Allen-lhj",
+    "fileheader.tpl": "/* * @Author: {author}  * @Date: {createTime}   * @Last Modified time: {updateTime}  */",
+    "fileheader.LastModifiedBy": "Allen-lhj",
+    "beautify.config": ""
+}

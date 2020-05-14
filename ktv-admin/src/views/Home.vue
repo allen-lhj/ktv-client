@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import wsmnav from "@/compontent/nav"
+import wsmnav from "@/components/nav"
     export default {
         name: 'home',
         compontent: {

@@ -42,35 +42,35 @@
                 nowTime:''
             }
         },
-        created() {
-            this.getAdminInfo();
-            this.currentTime();
-        },
-        methods:{
-            goIndex() {
+        // created() {
+        //     this.getAdminInfo();
+        //     this.currentTime();
+        // },
+        // methods:{
+        //     goIndex() {
 
-            }
-        },
+        //     }
+        // },
         currentTime(){
             setInterval(()=> {
                 this.nowTime = new Date().format("yyy/MM/dd HH:mm:ss")
             },1000)
         },
         //退出
-        logout() {
-            this.$confirm('确定退出吗？','退出提示', {
-                confirmButtonText:'退出',
-                cancelButtonText:'取消',
-                type:'warning'
-            }).then(() => {
-                this.$store.dispatch(clearAdminAuthorization);
-                this.$router.push("/login");
-            }).catch(() =>{})
-        },
-        //获取管理员信息
-        getAdminInfo() {
-            this.adminInfo = this.$store.getters.adminInfo;
-        }
+        // logout() {
+        //     this.$confirm('确定退出吗？','退出提示', {
+        //         confirmButtonText:'退出',
+        //         cancelButtonText:'取消',
+        //         type:'warning'
+        //     }).then(() => {
+        //         this.$store.dispatch(clearAdminAuthorization);
+        //         this.$router.push("/login");
+        //     }).catch(() =>{})
+        // },
+        // //获取管理员信息
+        // getAdminInfo() {
+        //     this.adminInfo = this.$store.getters.adminInfo;
+        // }
     }
 </script>
 

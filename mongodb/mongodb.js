@@ -6,9 +6,9 @@
 
 
 const mongoose = require("mongoose");
-const mongodbURI = require("../secret/jwtkey").mongodbURI;
+const mongodbURI = require("../secret/mongodbURI").mongodbURI;
 
-mongoose,connect(mongodbURI, {
+mongoose.connect(mongodbURI, {
     useNewUrlParser:true,
     useFindAndModify: false,
     useUnifiedTopology: true

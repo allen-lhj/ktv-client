@@ -21,7 +21,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "static/view/404.html"))
 })
 //创建服务器
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8633;
 app.listen(port,err => {
     if(err) throw err;
     console.log(`Server is running on port [${port}].`)

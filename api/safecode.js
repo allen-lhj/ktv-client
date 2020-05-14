@@ -1,6 +1,6 @@
 //获取验证码
 
-const svgCaptcha = rquire('svg-captcha');
+const svgCaptcha = require('svg-captcha');
 const router = require("express").Router();
 
 router.get("/" , (req, res) => {

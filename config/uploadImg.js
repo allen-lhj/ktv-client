@@ -4,28 +4,30 @@
 * 封装上传图片的方法
 */
 
+//封装图片上传方法
 const fs = require('fs');
 const path = require('path');
 const formidable = require('formidable');
 const formatTime = require('silly-datetime');
 
 /* 图片上传 */
-moudle.exports = (req, res) => {
-    let from = new formidable.IncomingForm();
-    formidable.encoding = 'utf-8';
+module.exports = (req, res) => {
+    let form = new formidable.IncomingForm();
+    form.encoding = 'utf-8';
     form.uploadDir = path.join(__dirname, '../static/poster');
     form.keepExtensions = true;
-    form.maxFieldsSize = 5 * 1024 * 1024;
+    form.maxFieldsSize = 5 * 1024 *1024;
     form.parse(req, (err, fields, files) => {
         let file = files.file;
-        /* 如果出错，则拦截*/
-        if (err) {
-            return res.status(500).json({status: "500", result: "服务器内部错误"});
+        /* 如果出错，则拦截 */
+        if(err) {
+            return res.status(500).json({status: "500", result: '服务器内部错误'});
         }
         if(file.size > form.maxFieldsSize) {
             fs.unlink(file.path);
-            return res.status(412).json ({status:'412', result: '图片不能超过5M'});
+            return res.status(412).json({status: "412", result: '图片不能超过5M'});
         }
+
         let extName = '';
 
         switch (file.type) {
@@ -45,6 +47,7 @@ moudle.exports = (req, res) => {
         if(extName.length == 0) {
             return res.status(412).json({status: "412", result: '只支持jpg和png格式图片'});
         }
+
         /* 拼接新的文件名 */
         let time = formatTime.format(new Date(), 'YYYYMMDDHHmmss');
         let num = Math.floor(Math.random() * 8999 + 10000);
@@ -59,4 +62,4 @@ moudle.exports = (req, res) => {
             }
         })
     })
-}
+};

@@ -16,6 +16,17 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 
+//路由
+const music = require("./api/music");
+const user = require("./api/user");
+const safecode = require("./api/safecode");
+const admin = require("./api/admin");
+app.use("/api/music", music);  // 音乐相关路由
+app.use("/api/user", user);   // 用户相关路由
+app.use("/api/safecode", safecode);  // 验证码
+app.use("/api/admin", admin);  // 管理员操作
+
+
 //404
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "static/view/404.html"))

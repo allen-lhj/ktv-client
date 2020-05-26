@@ -278,7 +278,7 @@ export default {
                               })
                            } else if(this.flag == 2) {
                                //编辑歌曲
-                               ws
+                               wsmLoading.start("密码正确，正在编辑歌曲")
                            }
                        } 
                     }).catch((err) => {

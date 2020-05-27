@@ -50,7 +50,7 @@ _axios.interceptors.response.use(
     }
 );
 
-Plugin.install = function(Vue, options) {
+Plugin.install = function(Vue) {
     Vue.axios = _axios;
     window.axios = _axios;
     Object.defineProperties(Vue.prototype, {

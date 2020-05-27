@@ -13,7 +13,7 @@
 import wsmnav from "@/components/nav"
     export default {
         name: 'home',
-        compontent: {
+        components: {
             wsmnav
         }
     }
